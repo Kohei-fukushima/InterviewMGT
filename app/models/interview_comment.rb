@@ -1,0 +1,2 @@
+class InterviewComment < ApplicationRecord
+end
