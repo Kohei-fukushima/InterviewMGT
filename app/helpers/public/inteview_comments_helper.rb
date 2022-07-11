@@ -1,0 +1,2 @@
+module Public::InteviewCommentsHelper
+end

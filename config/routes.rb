@@ -12,6 +12,12 @@ Rails.application.routes.draw do
     get 'users/quit'
     get 'users/out'
   end
+  namespace :public do
+    resources :interviews
+  end
+  namespace :public do
+    resources :interview_comments, only:[:create, :destroy]
+  end
 
 
 
@@ -19,6 +25,10 @@ Rails.application.routes.draw do
   devise_for :admin,skip:[:registrations,:passwords], controllers:{
       sessions: "admin/sessions"
   }
+
+    namespace :admin do
+    resources :interview_comments, only:[:create, :destroy]
+  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
