@@ -9,7 +9,10 @@ class Public::UsersController < ApplicationController
   def after_sign_out_path_for(resource)
     about_path
   end
-
+ 
+  def new
+  end
+  
   def show
   end
 

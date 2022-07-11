@@ -1,2 +1,10 @@
-<h1>Public::Interviews#new</h1>
-<p>Find me in app/views/public/interviews/new.html.erb</p>
+<h1>新しいインタビューを作成する</h1>
+
+<h4>フォーム</h4>
+  <%= form_with model: @interview do |f| %>
+    <h4>インタビュー名</h4>
+      <%= f.text_field :title %>
+    <h4>内容</h4>
+      <%= f.text_area :body %>
+    <%= f.submit '確定する' %>
+  <% end %>
