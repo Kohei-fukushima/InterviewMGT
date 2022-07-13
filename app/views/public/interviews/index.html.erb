@@ -1,2 +1,22 @@
-<h1>Public::Interviews#index</h1>
-<p>Find me in app/views/public/interviews/index.html.erb</p>
+    <h1>マイページ</h1>
+    <table class = "table">
+        <thread>
+            <tr>
+                <th>インタビューID</th>
+                <th>ホスト名</th>
+                <th>インタビュー名</th>
+            </tr>
+        </thread>
+        <tbody>
+            <% @interviews.each do |interview| %>
+            <tr>
+                <td><%= interview.id %></td>
+                <td><%= interview.user.name %></td>
+                <td><%= interview.title %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+
+
+

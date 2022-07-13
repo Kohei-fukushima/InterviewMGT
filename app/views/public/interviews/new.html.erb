@@ -1,7 +1,7 @@
 <h1>新しいインタビューを作成する</h1>
 
 <h4>フォーム</h4>
-  <%= form_with model: @interview do |f| %>
+  <%= form_with model: @interview, url:  public_interviews_path, method: :post do |f| %>
     <h4>インタビュー名</h4>
       <%= f.text_field :title %>
     <h4>内容</h4>
