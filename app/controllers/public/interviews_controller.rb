@@ -12,6 +12,7 @@ class Public::InterviewsController < ApplicationController
 
   def index
     @interviews = Interview.all
+    @user = current_user
   end
 
   def show

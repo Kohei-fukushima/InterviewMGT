@@ -4,19 +4,13 @@ Rails.application.routes.draw do
   get "about" => "homes#about"
 
   namespace :public do
-    resources :users
-
+    resources :users, except:[:new]
     get 'users/quit'
     get 'users/out'
-
-
+    
     resources :interviews
-
-
     resources :interview_comments, only:[:create, :destroy]
   end
-
-
 
   devise_for :users,skip:[:passwords], controllers:{
   registrations: "public/registrations",
@@ -25,7 +19,6 @@ Rails.application.routes.draw do
   devise_for :admin,skip:[:registrations,:passwords], controllers:{
       sessions: "admin/sessions"
   }
-
     namespace :admin do
     resources :interview_comments, only:[:create, :destroy]
   end
