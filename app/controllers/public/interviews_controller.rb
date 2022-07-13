@@ -20,12 +20,22 @@ class Public::InterviewsController < ApplicationController
   end
 
   def edit
+    @interview = Interview.find(params[:id])
   end
 
   def update
+    @interview = Interview.find(params[:id])
+    if @interview.update(interview_params)
+      redirect_to public_interview_path(@interview.id)
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @interview = Interview.find(params[:id])
+    @interview.destroy
+    redirect_to public_interviews_path
   end
 
   # 投稿データのストロングパラメータ
