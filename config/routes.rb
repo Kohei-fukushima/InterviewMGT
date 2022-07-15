@@ -8,8 +8,9 @@ Rails.application.routes.draw do
     get 'users/quit'
     get 'users/out'
     get "search" => "searchs#search"
-    resources :interviews
+    resources :interviews do
      resource :favorites, only: [:create, :destroy]
+    end
     resources :interview_comments, only:[:create, :destroy]
   end
 

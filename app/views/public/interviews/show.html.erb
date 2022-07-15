@@ -22,6 +22,22 @@
   						<td>内容</td>
   						<td><%= @interview.body%></td>
   					</tr>
+  					<tr>
+  					    <td>内容確認</td>
+                        <td>
+                          <% if @interview.favorited_by?(current_user) %>
+                          <%= link_to public_interview_favorites_path(@interview), method: :delete do %>
+                            ♥<%= @interview.favorites.count %>
+                          <% end %>
+                        </td>
+                        <% else %>
+                        <td>
+                          <%= link_to public_interview_favorites_path(@interview), method: :post do %>
+                            ♡<%= @interview.favorites.count %>
+                          <% end %>
+                        </td>
+                        <% end %>
+  					</tr>
 
   			</table>
 		</div>
