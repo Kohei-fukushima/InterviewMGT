@@ -11,7 +11,7 @@ class Public::InterviewsController < ApplicationController
   end
 
   def index
-    @interviews = Interview.all
+    @interviews = params[:tag_id].present? ? Tag.find(params[:tag_id]).interviews : Interview.all
     @user = current_user
   end
 
@@ -42,6 +42,6 @@ class Public::InterviewsController < ApplicationController
   private
 
   def interview_params
-    params.require(:interview).permit(:title, :body)
+    params.require(:interview).permit(:title, :body, tag_ids: [])
   end
 end

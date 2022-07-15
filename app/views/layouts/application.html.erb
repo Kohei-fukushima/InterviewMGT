@@ -19,6 +19,7 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
+                
           <% if user_signed_in? %>
               <%= render 'layouts/header_users' %>
           <% elsif admin_signed_in? %>
