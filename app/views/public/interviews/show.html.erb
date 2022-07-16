@@ -29,9 +29,7 @@
                           <%= link_to public_interview_favorites_path(@interview), method: :delete do %>
                             ♥<%= @interview.favorites.count %>
                           <% end %>
-                        </td>
                         <% else %>
-                        <td>
                           <%= link_to public_interview_favorites_path(@interview), method: :post do %>
                             ♡<%= @interview.favorites.count %>
                           <% end %>

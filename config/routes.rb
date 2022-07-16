@@ -10,8 +10,9 @@ Rails.application.routes.draw do
     get "search" => "searchs#search"
     resources :interviews do
      resource :favorites, only: [:create, :destroy]
+     resources :interview_comments, only:[:create, :destroy]
     end
-    resources :interview_comments, only:[:create, :destroy]
+
   end
 
   devise_for :users,skip:[:passwords], controllers:{
