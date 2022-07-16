@@ -17,6 +17,7 @@ class Public::InterviewsController < ApplicationController
 
   def show
     @interview = Interview.find(params[:id])
+    @interview_comment = InterviewComment.new
   end
 
   def edit

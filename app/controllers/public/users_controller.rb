@@ -10,10 +10,11 @@ class Public::UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
+    @user = User.find(params[:id])
   end
 
   def index
+    @user = User.all
   end
 
   def quit
@@ -31,6 +32,8 @@ class Public::UsersController < ApplicationController
     @user.update(user_params)
     redirect_to public_user_path(current_user)
   end
+  
+  
 
 private
  def user_params
