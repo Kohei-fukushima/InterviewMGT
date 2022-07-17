@@ -1,39 +1,4 @@
    <%= render 'public/users/info', user: @user %>
-   
-    <table class = "table">
-    　　<h4>参加した会議一覧</h4>
-        <thread>
-            <tr>
-                <th>ホスト名</th>
-                <th>インタビュー名</th>
-                <th>タグ</th>
-                <th>
-                    <%= form_tag public_interviews_path, method: :get, class: 'boards__searchForm' do %>
-                    <%= select_tag :tag_id, options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
-                     {
-                       prompt: 'タグで絞り込み検索',
-                       onchange: 'submit(this.form);'
-                     } %>
-                    <% end %>
-                </th>
-            </tr>
-        </thread>
-        <tbody>
-            <% @interviews.each do |interview| %>
-            <tr>
-                <td><%= interview.user.name %></td>
-                <td><%= link_to interview.title, public_interview_path(interview) %></td>
-  			　　<td><% interview.tags.each do |tag| %>
-  				　　<%= tag.name %>
-  		　　　　　　<% end %></td>
-            </tr>
-            <% end %>
-        </tbody>
-    </table>
-    
-    
-    
-    
     <table class = "table">
       <h5>開催した会議一覧</h5>
         <thread>

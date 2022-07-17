@@ -1,0 +1,10 @@
+
+  <% if interview.favorited_by?(current_user) %>
+  <%= link_to public_interview_favorites_path(interview), method: :delete, remote: true do %>
+    ♥<%= interview.favorites.count %>
+  <% end %>
+<% else %>
+  <%= link_to public_interview_favorites_path(interview), method: :post, remote: true do %>
+    ♡<%= interview.favorites.count %>
+  <% end %>
+<% end %>
