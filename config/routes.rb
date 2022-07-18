@@ -1,17 +1,24 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'events/index'
+  end
   root to: "homes#top"
   get "about" => "homes#about"
 
   namespace :public do
-    resources :users, except:[:new]
+    resources :users, except:[:new] do
+    member do
+      get :favorites
+    end
+  end
     get 'users/quit'
     get 'users/out'
     get "search" => "searchs#search"
     resources :interviews do
      resource :favorites, only: [:create, :destroy]
-     
      resources :interview_comments, only:[:create, :destroy]
+     get 'events' => 'events#index'
     end
 
   end
@@ -24,6 +31,9 @@ Rails.application.routes.draw do
       sessions: "admin/sessions"
   }
     namespace :admin do
+    resources :users, except:[:new]
+    get "search" => "searchs#search"
+    resources :interviews
     resources :interview_comments, only:[:create, :destroy]
   end
 
