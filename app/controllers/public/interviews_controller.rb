@@ -36,13 +36,13 @@ class Public::InterviewsController < ApplicationController
   def destroy
     @interview = Interview.find(params[:id])
     @interview.destroy
-    redirect_to public_interviews_path
+    redirect_to admin_users_path
   end
 
   # 投稿データのストロングパラメータ
   private
 
   def interview_params
-    params.require(:interview).permit(:title, :body, tag_ids: [])
+    params.require(:interview).permit(:title, :body, :schedule, tag_ids: [])
   end
 end

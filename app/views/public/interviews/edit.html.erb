@@ -5,7 +5,11 @@
             　　<%= form_with model: @interview, url: public_interview_path(@interview.id) do |f| %>
             　　<div class="form_group">
             　　      <label for="inputTitle">タイトル</label>
-            　       <%= f.text_field :title, autofocus: true, class:"form_control", placeholder: "title" %>
+            　       <%= f.text_field :title, autofocus: true, class: "form_control", placeholder: "title" %>
+            　　</div>
+            　　<div class= "form_group">
+            　　      <label for="InputSchedule">予定時刻</label>
+            　　      <%= f.datetime_field :schedule, class: "form_control", placeholder: "schedule" %>
             　　</div>
             　　<div class="form_group">
                     <label for="inputTag">タグ</label>

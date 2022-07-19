@@ -1,0 +1,20 @@
+<table class = "table">
+    <h5>User Index</h5>
+      <thread>
+          <tr>
+              <th>User Image</th>
+              <th>User Name</th>
+              <th>User Group</th>
+          </tr>
+      </thread>
+      <tbody>
+          <% @users.each do |user| %>
+          <tr>
+              <td><%= image_tag user.get_profile_image( 100,100 ) %></td>
+              <td><%= link_to user.name, admin_user_path(user) %></td>
+              <td><%= user.group %></td>
+              <td><%#= link_to "ユーザー削除" public_user_path(user), method: :destroy %></td>
+          </tr>
+          <% end %>
+      </tbody>
+</table>

@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-
-  namespace :public do
-    get 'events/index'
-  end
   root to: "homes#top"
   get "about" => "homes#about"
 
@@ -18,9 +14,14 @@ Rails.application.routes.draw do
     resources :interviews do
      resource :favorites, only: [:create, :destroy]
      resources :interview_comments, only:[:create, :destroy]
-     get 'events' => 'events#index'
     end
-
+  end
+  
+   namespace :admin do
+    resources :users, except:[:new]
+    get "search" => "searchs#search"
+    resources :interviews, only: [:index, :show, :destroy]
+    resources :interview_comments, only:[:create, :destroy]
   end
 
   devise_for :users,skip:[:passwords], controllers:{
@@ -30,12 +31,7 @@ Rails.application.routes.draw do
   devise_for :admin,skip:[:registrations,:passwords], controllers:{
       sessions: "admin/sessions"
   }
-    namespace :admin do
-    resources :users, except:[:new]
-    get "search" => "searchs#search"
-    resources :interviews
-    resources :interview_comments, only:[:create, :destroy]
-  end
+   
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
