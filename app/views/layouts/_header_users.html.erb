@@ -2,7 +2,9 @@
         <%= link_to "マイページ", public_interviews_path(current_user), class: 'nav-link text-white' %>
     </li>
     <li class="nav-item">
-        <%= link_to "新規インタビュー", new_public_interview_path, class: 'nav-link text-white' %>
+        <div data-turbolinks="false">
+            <%= link_to "新規インタビュー", new_public_interview_path, class: 'nav-link text-white' %>
+        </div>
     </li>
     <li class="nav-item">
         <%= link_to "About", about_path, class: 'nav-link text-white' %>
