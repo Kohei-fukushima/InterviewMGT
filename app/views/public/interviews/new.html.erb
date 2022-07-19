@@ -1,20 +1,42 @@
-<h1>新しいインタビューを作成する</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+          <table class="table table-hover table-inverse mt-3">
+            <h4 class="my-md-5">新規インタビュー作成</h4>
+              <%= form_with model: @interview, url: public_interviews_path, method: :post do |f| %>
+  			    <tr>
+  				    <td>予定日時</td>
+  				    <td><%= f.datetime_field :schedule %></td>
+  				</tr>
+  				<tr>
+  					<td>タイトル</td>
+  					<td><%= f.text_field :title %></td>
+  				</tr>
+  				<tr>
+  				    <td>タグ</td>
+  				    <td><%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+                    　<div>
+                       <%= tag.label do %>
+                         <%= tag.check_box %>
+                         <%= tag.text %>
+                       <% end %>
+                      <% end %>
+             　        </div>
+             　      </td>
+  				</tr>
+  				<tr>
+  					<td>内容</td>
+  					<td><%= f.text_area :body %></td>
+  				</tr>
+  				<tr>
+  				    <td></td>
+  				    <td>
+                     <%= f.submit '確定する' %>
+                     <% end %>
+                    </td>
+  				</tr>
+  			</table>
+        </div>
+    </div>
+</div>
 
-  <%= form_with model: @interview, url: public_interviews_path, method: :post do |f| %>
-    <h4>インタビュー名</h4>
-      <%= f.text_field :title %>
-      <h4>予定日時</h4>
-      <%= f.datetime_field :schedule %>
-    <h4>タグ</h4>
-    <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
-    　<div>
-       <%= tag.label do %>
-         <%= tag.check_box %>
-         <%= tag.text %>
-       <% end %>
-      <% end %>
-     　</div>
-    <h4>内容</h4>
-      <%= f.text_area :body %>
-    <%= f.submit '確定する' %>
-  <% end %>

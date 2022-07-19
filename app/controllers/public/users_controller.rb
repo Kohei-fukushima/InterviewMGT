@@ -33,9 +33,9 @@ class Public::UsersController < ApplicationController
     redirect_to public_user_path(current_user)
   end
 
-  def favorite
+  def favorites
     @user = User.find(params[:id])
-    favorites = Favorites.where(user_id: @user.id).pluck(:interview_id)
+    favorites = Favorite.where(user_id: @user.id).pluck(:interview_id)
     @favorite_interviews = Interview.find(favorites)
   end
 

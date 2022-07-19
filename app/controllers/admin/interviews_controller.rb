@@ -1,7 +1,7 @@
 class Admin::InterviewsController < ApplicationController
   def index
     @interviews = params[:tag_id].present? ? Tag.find(params[:tag_id]).interviews : Interview.all
-    @user = current_user
+    @users = User.all
   end
 
   def show
@@ -12,7 +12,7 @@ class Admin::InterviewsController < ApplicationController
   def destroy
     @interview = Interview.find(params[:id])
     @interview.destroy
-    redirect_to public_interviews_path
+    redirect_to admin_interviews_path
   end
 
    # 投稿データのストロングパラメータ

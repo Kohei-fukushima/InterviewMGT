@@ -1,2 +1,49 @@
-<h1>Admin::Interviews#show</h1>
-<p>Find me in app/views/admin/interviews/show.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+			<h4 class="my-3">インタビュー内容詳細</h4>
+  			<table class="table table-hover table-inverse mt-3">
+  				<table class="table table-hover table-inverse mt-3">
+  				    <tr>
+  					    <td>予定日時</td>
+  					    <td><%= @interview.schedule.strftime('%Y/%m/%d') %></td>
+  					</tr>
+  					<tr>
+  						<td>タイトル</td>
+  						<td><%= @interview.title %></td>
+  					</tr>
+  					<tr>
+  					    <td>タグ</td>
+  					    <td><% @interview.tags.each do |tag| %>
+  					        <%= tag.name %>
+  					        <% end %></td>
+  					</tr>
+  					<tr>
+  						<td>内容</td>
+  						<td><%= @interview.body%></td>
+  					</tr>
+  					<tr>
+  					    <td>コメント件数<td>
+  					    <td><%= @interview.interview_comments.count %></td>
+  					</tr>
+  			</table>
+  			<div>
+      			<% @interview.interview_comments.each do |interview_comment| %>
+      			<p><%= image_tag interview_comment.user.get_profile_image(100,80) %></p>
+      			<%= interview_comment.user.name %>
+      			<%= interview_comment.created_at.strftime('%Y/%m/%d') %>
+      			<div><%= interview_comment.comment %></div>
+      			  <% if interview_comment.user == current_user %>
+      			  <%= link_to "削除", admin_interview_interview_comment_path(interview_comment.interview,interview_comment), method: :delete %>
+      			  <% end %>
+      			<% end %>
+  			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+		    <%= link_to "投稿一覧に戻る", admin_interviews_path %>
+        <%= link_to "削除", admin_interview_path(@interview), method: :delete %>
+		</div>
+	</div>
+</div>

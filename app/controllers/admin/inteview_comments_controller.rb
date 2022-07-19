@@ -1,7 +1,12 @@
 class Admin::InteviewCommentsController < ApplicationController
-  def create
+  def destroy
+    InterviewComment.find(params[:id]).destroy
+    redirect_to public_interview_path(params[:interview_id])
   end
 
-  def destroy
+  private
+
+  def interview_comment_params
+    params.require(:interview_comment).permit(:comment)
   end
 end
