@@ -12,4 +12,7 @@ Tag.create([
     { name: '評価面談'},
     { name: '学習記録'},
     ])
-Admin.create
+Admin.create!(
+    email: "interview@admin",
+    password: "interview"
+    )
