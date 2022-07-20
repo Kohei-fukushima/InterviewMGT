@@ -36,7 +36,7 @@ class Public::InterviewsController < ApplicationController
   def destroy
     @interview = Interview.find(params[:id])
     @interview.destroy
-    redirect_to public_users_path
+    redirect_to public_interviews_path
   end
 
   # 投稿データのストロングパラメータ

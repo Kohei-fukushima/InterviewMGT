@@ -29,6 +29,11 @@
   					<td><%= f.text_area :body %></td>
   				</tr>
   				<tr>
+  				<tr>
+  					<td>公開範囲の設定</td>
+  					<td><%= f.select :privacy, [["公開", 1], ["非公開", 2]], include_blank: "選択して下さい" %></td>
+  				</tr>
+  				<tr>
   				    <td></td>
   				    <td>
                      <%= f.submit '確定する' %>

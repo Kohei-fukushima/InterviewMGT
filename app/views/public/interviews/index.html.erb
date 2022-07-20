@@ -20,16 +20,17 @@
                   </div>
                     <thread>
                         <tr>
-                            <th>インタビューID</th>
+                            <th>予定日程</th>
                             <th>ホスト名</th>
                             <th>インタビュー名</th>
                             <th>タグ</th>
+                            <th>公開設定</th>
                         </tr>
                     </thread>
                     <tbody>
                         <% @interviews.each do |interview| %>
                         <tr>
-                            <td><%= interview.id %></td>
+                            <td><%= interview.schedule %></td>
                             <td><%= interview.user.name %></td>
                             <td><%= link_to interview.title, public_interview_path(interview) %></td>
               			　　<td><% interview.tags.each do |tag| %>
