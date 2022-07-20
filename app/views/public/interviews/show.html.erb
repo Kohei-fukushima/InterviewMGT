@@ -48,7 +48,7 @@
   			</div>
   			<div>
   			    <%= form_with model: [@interview, @interview_comment], url: public_interview_interview_comments_path(@interview) do |f| %>
-  			      <%= f.text_area :comment,rows:'5', placeholder: "コメント欄" %>
+  			      <%= f.text_area :comment,rows:'5', size: "40x5", placeholder: "コメント欄" %>
   			      <%= f.submit "送信する" %>
   			    <% end %>
   			</div>

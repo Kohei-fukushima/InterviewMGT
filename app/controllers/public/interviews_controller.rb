@@ -6,8 +6,11 @@ class Public::InterviewsController < ApplicationController
   def create
     @interview = Interview.new(interview_params)
     @interview.user_id = current_user.id
-    @interview.save
-    redirect_to public_interviews_path
+    if @interview.save
+      redirect_to public_interviews_path
+    else
+      render :new
+    end
   end
 
   def index

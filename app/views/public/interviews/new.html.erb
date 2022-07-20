@@ -3,6 +3,14 @@
         <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
           <table class="table table-hover table-inverse mt-3">
             <h4 class="my-md-5">新規インタビュー作成</h4>
+            <% if @interview.errors.any? %>
+              <%= @interview.errors.count %>件のエラーが発生しました
+              <ul>
+                <% @interview.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            <% end %>
               <%= form_with model: @interview, url: public_interviews_path, method: :post do |f| %>
   			    <tr>
   				    <td>予定日時</td>
@@ -26,13 +34,9 @@
   				</tr>
   				<tr>
   					<td>内容</td>
-  					<td><%= f.text_area :body %></td>
+  					<td><%= f.text_area :body, size: "40x15" %></td>
   				</tr>
   				<tr>
-  				<tr>
-  					<td>公開範囲の設定</td>
-  					<td><%= f.select :privacy, [["公開", 1], ["非公開", 2]], include_blank: "選択して下さい" %></td>
-  				</tr>
   				<tr>
   				    <td></td>
   				    <td>
