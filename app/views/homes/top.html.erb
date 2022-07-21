@@ -1,15 +1,15 @@
-<div class="top_image image_set"></div>
-
-
-
- 　　　　　<main class="px-3">
+<div class="top_image image_set">
+    <div class="filter">
+        <div class="content">
             <h1>InteviewMGT</h1>
-            <p class="lead">あなたの会議や面談を効率的に管理し、共有できるサイトです。<br>
-                            また、あなたが共有しなくても学習の記録として使用することも可能です。</p>
-            <p class="lead">
-                <%= link_to "新規登録", new_user_registration_path, class: "btn btn-secondary" %>
+            <p>あなたの会議や面談を効率的に管理し、共有できるサイトです。<br>
+               また、あなたが共有しなくても学習の記録として使用することも可能です。</p>
+            <p>
+                <%= link_to "新規登録", new_user_registration_path, class: "btn btn-secondary" %> | <%= link_to "ログイン", new_user_session_path, class: "btn btn-secondary" %>
             </p>
-            <p class="lead">
-                <%= link_to "ログイン", new_user_session_path, class: "btn btn-secondary" %>
-            </p>
-        </main>
+        </div>
+    </div>
+</div>
+
+
+
