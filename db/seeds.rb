@@ -16,3 +16,9 @@ Admin.create!(
     email: "interview@admin",
     password: "interview"
     )
+
+#あとで修正項目
+# tags = %w(社内会議 社内面談 評価面談 学習記録 )
+# tags.each do |tag|
+#   Tag.find_or_create_by(name: tag)
+# end

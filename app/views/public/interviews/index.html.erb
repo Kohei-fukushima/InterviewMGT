@@ -7,7 +7,6 @@
                <div id ='calendar'></div>
                <%= javascript_pack_tag 'calendar/event' %>
            </div>
-                <table class = "table">
                   <h5>開催した会議一覧</h5>
                   <div class="ml-3 mt-2">
                       <%= form_tag public_interviews_path, method: :get, class: 'boards__searchForm' do %>
@@ -18,6 +17,7 @@
                                  } %>
                                 <% end %>
                   </div>
+                  <table class="table">
                     <thread>
                         <tr>
                             <th>予定日程</th>
@@ -29,7 +29,7 @@
                     <tbody>
                         <% @interviews.each do |interview| %>
                         <tr>
-                            <td><%= interview.schedule %></td>
+                            <td><%= interview.schedule.strftime('%Y/%m/%d') %></td>
                             <td><%= interview.user.name %></td>
                             <td><%= link_to interview.title, public_interview_path(interview) %></td>
               			　　<td><% interview.tags.each do |tag| %>
@@ -40,6 +40,10 @@
                     </tbody>
                 </table>
        </div>
+            <div class="justify-content-center d-flex text-center">
+                <%= paginate @interviews %>
+            </div>
+
    </div>
 
 

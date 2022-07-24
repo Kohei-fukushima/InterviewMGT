@@ -14,8 +14,9 @@ class Public::InterviewsController < ApplicationController
   end
 
   def index
-    @interviews = params[:tag_id].present? ? Tag.find(params[:tag_id]).interviews : Interview.all
+    @interviews = params[:tag_id].present? ? Tag.find(params[:tag_id]).interviews.page(params[:page]) : Interview.all.page(params[:page])
     @user = current_user
+   
   end
 
   def show

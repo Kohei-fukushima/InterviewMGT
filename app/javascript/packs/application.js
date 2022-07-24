@@ -12,6 +12,8 @@ import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
+import "@fullcalendar/common/main.css"
+import "@fullcalendar/daygrid/main.css"
 
 Rails.start()
 Turbolinks.start()
