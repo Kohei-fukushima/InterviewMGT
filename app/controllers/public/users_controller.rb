@@ -11,16 +11,11 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @interviews = @user.interviews.page(params[:page])
   end
 
   def index
-    @user = User.all
-  end
-
-  def quit
-  end
-
-  def out
+    @users = User.all
   end
 
   def edit
