@@ -14,10 +14,10 @@ class Public::InterviewsController < ApplicationController
   end
 
   def index
-    @interviews = params[:tag_id].present? ? Tag.find(params[:tag_id]).interviews.page(params[:page]) : Interview.all.page(params[:page])
     @user = current_user
-    @interview_all = Interview.all
-
+    @interviews = params[:tag_id].present? ? Tag.find(params[:tag_id]).interviews.page(params[:page]) : @user.interviews.page(params[:page])
+    ids = current_user.followings.pluck(:id).push(current_user.id)
+    @interview_all = Interview.includes(:user).where(users: {id: ids })
   end
 
   def show
