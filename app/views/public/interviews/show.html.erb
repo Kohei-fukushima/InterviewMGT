@@ -31,26 +31,16 @@
   					    <td><%= @interview.interview_comments.count %></td>
   					</tr>
   			</table>
-  	</div>
-            <div class="col-8 mt-3 ">
-  	        <div class="container">
-  	            <div class="border rounded border border-dark" style="height:700px">
-  					<p>内容</p>
-  					<div><%= @interview.body%><div>
-  			    </div>
-            </div>
-  	        </div>
-
   			<div>
-      			<% @interview.interview_comments.each do |interview_comment| %>
-      			<p><%= image_tag interview_comment.user.get_profile_image(100,80) %></p>
-      			<%= interview_comment.user.name %>
-      			<%= interview_comment.created_at.strftime('%Y/%m/%d') %>
-      			<div><%= interview_comment.comment %></div>
-      			  <% if interview_comment.user == current_user %>
-      			  <%= link_to "削除", public_interview_interview_comment_path(interview_comment.interview,interview_comment), method: :delete %>
-      			  <% end %>
-      			<% end %>
+  			<% @interview.interview_comments.each do |interview_comment| %>
+  			<p><%= image_tag interview_comment.user.get_profile_image(100,80) %></p>
+  			<%= interview_comment.user.name %>
+  			<%= interview_comment.created_at.strftime('%Y/%m/%d') %>
+  			<div><%= interview_comment.comment %></div>
+  			  <% if interview_comment.user == current_user %>
+  			  <%= link_to "削除", public_interview_interview_comment_path(interview_comment.interview,interview_comment), method: :delete %>
+  			  <% end %>
+  			<% end %>
   			</div>
   			<div>
   			    <%= form_with model: [@interview, @interview_comment], url: public_interview_interview_comments_path(@interview) do |f| %>
@@ -58,14 +48,21 @@
   			      <%= f.submit "送信する" %>
   			    <% end %>
   			</div>
-		</div>
-	<div class="row">
-		<div class="col-4">
-		    <%= link_to "マイページに戻る", public_interviews_path %>
-		    <%= link_to " 編集する", edit_public_interview_path(@interview.id), class: "btn btn-sm btn-success" %>
-		    <% if @interview.user == current_user %>
-            <%= link_to "削除", public_interview_path(@interview), method: :delete %>
-            <% end %>
-		</div>
+  			<div class="my-2">
+    		    <%= link_to "マイページに戻る", public_interviews_path, class: "btn btn-sm btn-success" %>
+    		    <%= link_to " 編集する", edit_public_interview_path(@interview.id), class: "btn btn-sm btn-success" %>
+    		    <% if @interview.user == current_user %>
+                <%= link_to "削除", public_interview_path(@interview), method: :delete, class: "btn btn-sm btn-danger" %>
+                <% end %>
+    		</div>
+  	    </div>
+  	    <div class="col-8 mt-3 ">
+  	        <div class="container">
+  	          <p>内容</p>
+  	            <div class="border rounded border border-dark" style="height:700px">
+  					<div><%= @interview.body%></div>
+  			    </div>
+            </div>
+  	     </div>
 	</div>
 </div>
