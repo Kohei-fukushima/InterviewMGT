@@ -1,6 +1,6 @@
 class Admin::InterviewsController < ApplicationController
   def index
-    @interviews = params[:tag_id].present? ? Tag.find(params[:tag_id]).interviews : Interview.all
+    @interviews = params[:tag_id].present? ? Tag.find(params[:tag_id]).interviews.page(params[:page]) : Interview.page(params[:page])
     @users = User.all
   end
 
