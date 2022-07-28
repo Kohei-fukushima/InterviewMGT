@@ -6,6 +6,7 @@ class Public::UsersController < ApplicationController
   end
 
   def index
+    # notによってログインユーザー以外のidのみを取得する
     @users = User.where.not(id: current_user.id)
   end
 

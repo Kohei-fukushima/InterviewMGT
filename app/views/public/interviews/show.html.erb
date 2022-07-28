@@ -43,6 +43,7 @@
   			<% end %>
   			</div>
   			<div>
+  			    <!--モデルのアソシエーション上、二つを定義しないとうまく動作しない-->
   			    <%= form_with model: [@interview, @interview_comment], url: public_interview_interview_comments_path(@interview) do |f| %>
   			      <%= f.text_area :comment,rows:'5', size: "40x5", placeholder: "コメント欄" %>
   			      <%= f.submit "送信する" %>

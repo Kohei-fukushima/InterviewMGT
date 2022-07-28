@@ -18,13 +18,13 @@ class Public::SessionsController < Devise::SessionsController
   # def destroy
   #   super
   # end
-
+  #サインイン後の遷移先指定。コメントアウトを消す。
   protected
   def after_sign_in_path_for(resource)
   public_interviews_path
   end
-  
-  
+
+
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_in_params

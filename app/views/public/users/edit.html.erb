@@ -2,6 +2,7 @@
     <div class="row">
         <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
             <div class="container">
+            <!--ラベルとフォーム部品を水平に並べる。これで綺麗に揃った-->
             <div class="form-horizontal">
             <h2 class="mt-3">プロフィール編集</h2>
             <%= form_with model: @user, url:public_user_path(current_user) do |f| %>

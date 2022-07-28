@@ -1,5 +1,6 @@
 class Public::RelationshipsController < ApplicationController
   before_action :authenticate_user!
+  # build=親モデルに属する子モデルのインスタンスを新たに生成したい場合に使うメソッド。
   def create
     following = current_user.relationships.build(follower_id: params[:user_id])
     following.save

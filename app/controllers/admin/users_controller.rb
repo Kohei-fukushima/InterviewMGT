@@ -1,4 +1,5 @@
 class Admin::UsersController < ApplicationController
+  # admin側のサインアウト後の遷移先を指定する。
   def after_sign_out_path_for(resource)
     about_path
   end
@@ -20,12 +21,12 @@ class Admin::UsersController < ApplicationController
     @user.update(user_params)
     redirect_to admin_user_path(current_user)
   end
-  
+
   def destroy
     @user = User.find(params[:id])
     @user.destroy(user_params)
     redirect_to admin
-  
+
   end
 
   def user_params

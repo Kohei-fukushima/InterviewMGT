@@ -15,7 +15,9 @@ class Public::InterviewsController < ApplicationController
 
   def index
     @user = current_user
+    # ページネーションはinterviewに紐づいているtagにもつけることで実装できる
     @interviews = params[:tag_id].present? ? Tag.find(params[:tag_id]).interviews.page(params[:page]) : @user.interviews.page(params[:page])
+    # idsがユーザーのフォローに紐づいたidを取得し、pushでユーザー自身のidも取得する
     ids = current_user.followings.pluck(:id).push(current_user.id)
     @interview_all = Interview.includes(:user).where(users: {id: ids })
   end

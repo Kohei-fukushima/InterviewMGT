@@ -51,6 +51,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
+  # コメントアウトされていたユーザー側のサインアップ後の画面遷移先はここから
   def after_sign_up_path_for(resource)
   edit_public_user_path(@user)
   end
