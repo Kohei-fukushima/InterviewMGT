@@ -1,6 +1,7 @@
 class Public::InterviewsController < ApplicationController
   def new
     @interview = Interview.new
+    render plain: render_to_string(partial: 'event_modal', layout: false, locals: { interview: @interview } )
   end
 
   def create

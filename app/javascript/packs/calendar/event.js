@@ -36,13 +36,18 @@ document.addEventListener('turbolinks:load', function() {
 
             dateClick: function(info){
                 //日付をクリックしたときのイベント(できたらやる)
+                $.ajax({
+                type: 'GET',
+                url:  './interviews/new',
+            }).done(function(res) {
+                console.log(res)
+                $('.modal-body').html(res)
+            }).fail(function(res){
+                console.log('失敗')
+            })
+
             },
-            eventClick: function(info){
-                //表示されたイベントをクリックしたときのイベント
-            },
-            eventClassNames: function(arg){
-                //表示されたイベントにclassをcss用に追加する
-            }
+
         });
         //カレンダー表示
         calendar.render();
