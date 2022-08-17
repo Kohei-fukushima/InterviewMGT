@@ -4,10 +4,10 @@ import { Calendar} from '@fullcalendar/core';
 import interactionPlugin from '@fullcalendar/interaction';
 import monthGridPlugin from '@fullcalendar/daygrid'
 import googleCalendarApi from '@fullcalendar/google-calendar'
+import { modal} from "bootstrap";
 
 //<div id='calendar'></div>のidからオブジェクトを定義してカレンダーを作る
 document.addEventListener('turbolinks:load', function() {
-
 
     //カレンダーの中身を設定(月表示)
     var calendar
@@ -35,17 +35,23 @@ document.addEventListener('turbolinks:load', function() {
             height: "auto",
 
             dateClick: function(info){
-                //日付をクリックしたときのイベント(できたらやる)
-                $.ajax({
-                type: 'GET',
-                url:  './interviews/new',
-            }).done(function(res) {
-                console.log(res)
-                $('.modal-body').html(res)
-            }).fail(function(res){
-                console.log('失敗')
-            })
-
+                //日付をクリックしたときのイベント
+            //     $.ajax({
+            //     type: 'GET',
+            //     url:  './interviews/new',
+            // }).done(function(res) {
+            //     // 成功処理ができた場合、受け取ったhtmlを追加したmodalの中に挿入する
+            //     $('.modal-body').html(res);
+            // }).fail(function(fail){
+            //     alert('failed');
+            // });
+                $('body').addClass('modal-open')
+                $('#exampleModal').addClass('show')
+                $('#exampleModal').css('display', 'block')
+                $('#exampleModal').removeAttr('aria-hidden')
+                $('#exampleModal').attr('aria-modal', 'true')
+                $('#exampleModal').attr('role', 'dialog')
+                $('body').append('<div class="modal-backdrop fade show"></div>')
             },
 
         });
@@ -55,5 +61,17 @@ document.addEventListener('turbolinks:load', function() {
      $(".error").click(function(){
             calendar.refetchEvents();
         });
+
+        $('.close').on('click', function(){
+            console.log('test')
+            $('body').removeClass('modal-open')
+            $('#exampleModal').removeClass('show')
+            $('#exampleModal').css('display', 'none')
+            $('#exampleModal').attr('aria-hidden', 'true')
+            $('#exampleModal').removeAttr('aria-modal')
+            $('#exampleModal').removeAttr('role')
+            $('.modal-backdrop').remove()
+        })
     });
+
 
