@@ -4,12 +4,12 @@ class Public::InterviewCommentsController < ApplicationController
     comment = current_user.interview_comments.new(interview_comment_params)
     comment.interview_id = interview.id
     comment.save!
-    redirect_to public_interview_path(interview)
+    redirect_to interview_path(interview)
   end
 
   def destroy
     InterviewComment.find(params[:id]).destroy
-    redirect_to public_interview_path(params[:interview_id])
+    redirect_to interview_path(params[:interview_id])
   end
 
   private

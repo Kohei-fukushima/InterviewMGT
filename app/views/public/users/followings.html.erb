@@ -15,12 +15,12 @@
           <% @users.each do |user| %>
             <tr>
               <td><%= image_tag user.get_profile_image( 100,100 ) %></td>
-              <td><%= link_to user.name, public_user_path(user) %></td>
+              <td><%= link_to user.name, user_path(user) %></td>
               <td><%= user.group %></td>
               <td>
                 <% if user != current_user %>
                   <% if user.is_followed_by?(current_user) %>
-                    <%=link_to public_user_relationships_path(user), method: :delete do %>
+                    <%=link_to user_relationships_path(user), method: :delete do %>
                       <button type="button" class="btn btn btn-danger">フォロー解除</button>
                     <% end %>
                   <% else %>

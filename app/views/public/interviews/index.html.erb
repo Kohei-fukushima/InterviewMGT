@@ -15,7 +15,7 @@
            </div>
                   <h5>開催した会議一覧</h5>
                   <div class="ml-3 mt-2">
-                      <%= form_tag public_interviews_path, method: :get, class: 'boards__searchForm' do %>
+                      <%= form_tag interviews_path, method: :get, class: 'boards__searchForm' do %>
                                 <%= select_tag :tag_id, options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
                                  {
                                    prompt: 'タグで絞り込み検索',
@@ -37,7 +37,7 @@
                         <tr>
                             <td><%= interview.schedule.strftime('%Y/%m/%d') %></td>
                             <td><%= interview.user.name %></td>
-                            <td><%= link_to interview.title, public_interview_path(interview) %></td>
+                            <td><%= link_to interview.title, interview_path(interview) %></td>
               			　　<td><% interview.tags.each do |tag| %>
               				　　<%= tag.name %>
               		　　　　　　<% end %></td>

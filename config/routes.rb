@@ -2,7 +2,13 @@ Rails.application.routes.draw do
   root to: "homes#top"
   get "about" => "homes#about"
 
-  namespace :public do
+  # scope moduleにedviseのルーティングが包括しないようにその前に配置し直し
+  devise_for :users,skip:[:passwords], controllers:{
+  registrations: "public/registrations",
+  sessions: 'public/sessions'
+  }
+
+  scope module: :public do
     resources :users, except:[:new] do
         resource :relationships, only: [:create, :destroy]
           get :followings, on: :member
@@ -27,10 +33,7 @@ Rails.application.routes.draw do
     resources :interview_comments, only:[:create, :destroy]
   end
 
-  devise_for :users,skip:[:passwords], controllers:{
-  registrations: "public/registrations",
-  sessions: 'public/sessions'
-  }
+
   devise_for :admin,skip:[:registrations,:passwords], controllers:{
       sessions: "admin/sessions"
   }

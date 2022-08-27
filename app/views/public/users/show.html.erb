@@ -3,7 +3,7 @@
 		<div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
 			<h4 class="my-3">My Profile</h4>
 			<% if @user == current_user %>
-			<%= link_to " 編集する", edit_public_user_path(@user.id), class: "btn btn-sm btn-success" %>
+			<%= link_to " 編集する", edit_user_path(@user.id), class: "btn btn-sm btn-success" %>
 			<% end %>
             <div class="field my-3">
             <%= image_tag @user.get_profile_image( 100,100 ) %>
@@ -26,12 +26,12 @@
 			    <tr>
 			      <td>フォロー</td>
 			      <% if @user.is_followed_by?(current_user) %>
-			      <td><%= link_to public_user_relationships_path(@user), method: :delete do %>
+			      <td><%= link_to user_relationships_path(@user), method: :delete do %>
 			      <button class="btn btn-danger">フォロー解除</button></td>
                   <% end %>
 
 			      <% else %>
-			      <td><%= link_to public_user_relationships_path(@user), method: :post do %>
+			      <td><%= link_to user_relationships_path(@user), method: :post do %>
 			      <button class="btn btn-primary">フォロー</button></td>
 			      <% end %>
 			      <% end %>
@@ -42,13 +42,13 @@
 	<div class="row">
 		<div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
 			<div data-turbolinks="false">
-		    <%= link_to "マイページに戻る", public_interviews_path, class: "btn btn-sm btn-primary mb-3" %>
+		    <%= link_to "マイページに戻る", interviews_path, class: "btn btn-sm btn-primary mb-3" %>
 		  </div>
 		</div>
 	</div>
 	 <h5>開催した会議一覧</h5>
       <div class="ml-3 mt-2">
-          <%= form_tag public_user_path(@user), method: :get, class: 'boards__searchForm' do %>
+          <%= form_tag user_path(@user), method: :get, class: 'boards__searchForm' do %>
                     <%= select_tag :tag_id, options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
                      {
                        prompt: 'タグで絞り込み検索',
@@ -70,7 +70,7 @@
             <tr>
                 <td><%= interview.schedule.strftime('%Y/%m/%d') %></td>
                 <td><%= interview.user.name %></td>
-                <td><%= link_to interview.title, public_interview_path(interview) %></td>
+                <td><%= link_to interview.title, interview_path(interview) %></td>
   			　　<td><% interview.tags.each do |tag| %>
   				　　<%= tag.name %>
   		　　　　　　<% end %></td>

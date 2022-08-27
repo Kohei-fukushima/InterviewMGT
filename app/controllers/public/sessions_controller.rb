@@ -21,7 +21,7 @@ class Public::SessionsController < Devise::SessionsController
   #サインイン後の遷移先指定。コメントアウトを消す。
   protected
   def after_sign_in_path_for(resource)
-  public_interviews_path
+  interviews_path
   end
 
 
