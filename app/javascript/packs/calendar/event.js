@@ -16,7 +16,7 @@ document.addEventListener('turbolinks:load', function() {
         calendar = new Calendar(calendarEl, {
             plugins: [ monthGridPlugin, interactionPlugin, googleCalendarApi ],
 
-            events: '/public/interviews.json',
+            events: '/interviews.json',
             //細かな表示設定
             locale: 'ja',
             timeZone: 'Asia/Tokyo',
@@ -35,16 +35,7 @@ document.addEventListener('turbolinks:load', function() {
             height: "auto",
 
             dateClick: function(info){
-                //日付をクリックしたときのイベント
-            //     $.ajax({
-            //     type: 'GET',
-            //     url:  './interviews/new',
-            // }).done(function(res) {
-            //     // 成功処理ができた場合、受け取ったhtmlを追加したmodalの中に挿入する
-            //     $('.modal-body').html(res);
-            // }).fail(function(fail){
-            //     alert('failed');
-            // });
+                //日付をクリックしたときのイベント.ajaxではうまく反映されないため、一つずつ記載
                 $('body').addClass('modal-open')
                 $('#exampleModal').addClass('show')
                 $('#exampleModal').css('display', 'block')

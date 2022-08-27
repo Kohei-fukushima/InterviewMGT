@@ -11,7 +11,7 @@
                 <% end %>
               </ul>
             <% end %>
-              <%= form_with model: @interview, url: public_interviews_path, method: :post do |f| %>
+              <%= form_with model: @interview, url: interviews_path, method: :post do |f| %>
   			    <tr>
   				    <td>予定日時</td>
   				    <td><%= f.datetime_field :schedule %></td>
