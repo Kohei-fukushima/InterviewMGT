@@ -3,8 +3,11 @@ class Public::InterviewCommentsController < ApplicationController
     interview = Interview.find(params[:interview_id])
     comment = current_user.interview_comments.new(interview_comment_params)
     comment.interview_id = interview.id
-    comment.save!
+    if comment.save
     redirect_to interview_path(interview)
+    else
+    redirect_to interview_path(interview)
+    end
   end
 
   def destroy
